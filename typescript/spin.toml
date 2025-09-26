@@ -1,0 +1,19 @@
+spin_manifest_version = 2
+
+[application]
+authors = ["Caleb Schoepp <caleb.schoepp@fermyon.com>"]
+description = "Shorten URLs"
+name = "url-shortener"
+version = "0.1.0"
+
+[[trigger.http]]
+route = "/..."
+component = "url-shortener"
+
+[component.url-shortener]
+source = "dist/url-shortener.wasm"
+exclude_files = ["**/node_modules"]
+key_value_stores = ["default"]
+[component.url-shortener.build]
+command = ["npm install", "npm run build"]
+watch = ["src/**/*.ts"]

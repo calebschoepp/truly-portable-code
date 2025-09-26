@@ -1,0 +1,16 @@
+[package]
+name = "url-shortener"
+authors = ["Caleb Schoepp <caleb.schoepp@fermyon.com>"]
+description = "Shorten URLs"
+version = "0.1.0"
+rust-version = "1.78"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+anyhow = "1"
+spin-sdk = "5.0.0"
+
+[workspace]

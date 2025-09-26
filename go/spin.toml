@@ -1,0 +1,19 @@
+spin_manifest_version = 2
+
+[application]
+name = "url-shortener"
+version = "0.1.0"
+authors = ["Caleb Schoepp <caleb.schoepp@fermyon.com>"]
+description = "Shorten URLs"
+
+[[trigger.http]]
+route = "/..."
+component = "url-shortener"
+
+[component.url-shortener]
+source = "main.wasm"
+allowed_outbound_hosts = []
+key_value_stores = ["default"]
+[component.url-shortener.build]
+command = "tinygo build -target=wasip1 -buildmode=c-shared -no-debug -o main.wasm ."
+watch = ["**/*.go", "go.mod"]

@@ -1,0 +1,18 @@
+spin_manifest_version = 2
+
+[application]
+authors = ["Caleb Schoepp <caleb.schoepp@fermyon.com>"]
+description = "Shorten URLs"
+name = "url-shortener"
+version = "0.1.0"
+
+[[trigger.http]]
+route = "/..."
+component = "url-shortener"
+
+[component.url-shortener]
+source = "app.wasm"
+key_value_stores = ["default"]
+[component.url-shortener.build]
+command = "componentize-py -w spin-http componentize app -o app.wasm"
+watch = ["*.py", "requirements.txt"]
