@@ -13,7 +13,7 @@ This module will guide you through the pre-requisites needed to complete the res
 
 ## Request Access to Fermyon Wasm Functions
 
-Fermyon Wasm Functions is currently in public preview. As such you'll need to request access to deploy to it later in this workshop. When it asks for the reason for wanting access enter something based on the conference you're at e.g. `TXLF 2025 workshop`. Fill out the form [here](https://fibsu0jcu2g.typeform.com/fwf-preview).
+Fermyon Wasm Functions is currently in public preview. As such you'll need to request access to deploy to it later in this workshop. When it asks for the reason for wanting access choose the name of the conference you're at e.g. `TXLF 2025`. Fill out the form [here](https://fibsu0jcu2g.typeform.com/fwf-preview).
 
 It's important to do this at the start of the workshop so that you can be granted access in time for you to use Fermyon Wasm Functions at the end of the workshop.
 
