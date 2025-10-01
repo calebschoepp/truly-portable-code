@@ -22,6 +22,8 @@ Follow along with the guide [here](https://www.spinkube.dev/docs/install/azure-k
 
 Once you have that working come back here and go to the next step.
 
+> **Note:** If you would prefer to not use AKS you can follow the [quickstart guide](https://www.spinkube.dev/docs/install/quickstart/) to install SpinKube on a [k3d](https://k3d.io/stable/) cluster locally.
+
 ## 2. Deploy URL Shortener with Valkey Backing Storage
 
 Now it is time to deploy our URL shortener Spin application to the AKS cluster. When running a Spin app locally the key value store is backed by Sqlite. In Kubernetes however, we'll want a single persistent service running otherwise every replica of our Spin app would be using its own local Sqlite database which would lead to inconsistent results.
@@ -31,7 +33,7 @@ Let's setup [Valkey](https://valkey.io/) as the backing storage for key value.
 ```bash
 $ helm repo add valkey https://valkey.io/valkey-helm/
 $ helm repo update
-$ helm install valkey --namespace valkey --create-namespace oci://registry-1.docker.io/bitnamicharts/valkey
+$ helm install valkey --namespace valkey --create-namespace valkey/valkey
 ```
 
 We will need the URL for Valkey so that we can configure our Spin application to use it. Let's put the URL in a K8s secret:
@@ -102,13 +104,13 @@ $ kubectl port-forward url-shortener-xxxxxx-xxxxx 8080:80
 In another terminal:
 
 ```bash
-$ curl localhost:3000/foo -i
+$ curl localhost:8080/foo -i
 HTTP/1.1 404 Not Found
 
-$ curl localhost:3000/foo -i --data 'https://wikipedia.org'
+$ curl localhost:8080/foo -i --data 'https://wikipedia.org'
 HTTP/1.1 201 Created
 
-$ curl localhost:3000/foo -i
+$ curl localhost:8080/foo -i
 HTTP/1.1 302 Found
 location: https://wikipedia.org
 ```
