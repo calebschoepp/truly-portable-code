@@ -164,7 +164,6 @@ fn handle_url_shortener(req: Request) -> anyhow::Result<impl IntoResponse> {
 
     router.get("/:slug", redirect);
     router.post("/:slug", shorten);
-    router.any("/*", not_found);
 
     Ok(router.handle(req))
 }
@@ -210,14 +209,6 @@ fn redirect(_req: Request, params: Params) -> anyhow::Result<impl IntoResponse> 
             .build());
     }
 
-    Ok(Response::builder().status(404).body("Not Found").build())
-}
-```
-
-Finally we can implement the `not_found` function to return a `404` for any other requests.
-
-```rust
-fn not_found(_req: Request, _params: Params) -> anyhow::Result<impl IntoResponse> {
     Ok(Response::builder().status(404).body("Not Found").build())
 }
 ```

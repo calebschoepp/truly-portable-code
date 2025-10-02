@@ -8,7 +8,6 @@ fn handle_url_shortener(req: Request) -> anyhow::Result<impl IntoResponse> {
 
     router.get("/:slug", redirect);
     router.post("/:slug", shorten);
-    router.any("/*", not_found);
 
     Ok(router.handle(req))
 }
@@ -34,8 +33,4 @@ fn shorten(req: Request, params: Params) -> anyhow::Result<impl IntoResponse> {
     store.set(slug, url)?;
 
     Ok(Response::builder().status(201).build())
-}
-
-fn not_found(_req: Request, _params: Params) -> anyhow::Result<impl IntoResponse> {
-    Ok(Response::builder().status(404).body("Not Found").build())
 }
