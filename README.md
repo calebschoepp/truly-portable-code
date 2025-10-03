@@ -7,7 +7,7 @@ In this workshop we'll be taking the role of a developer tasked with the job of 
 ## Workshop Modules
 
 0. [Setup](00-setup.md)
-1. [Local Spin](01-spin.md)
+1. [Local Spin](01-local-spin.md)
 2. [Deploying to SpinKube](02-spinkube.md)
 3. [Deploying to Fermyon Wasm Functions](03-fwf.md)
 4. [Bonus](04-bonus.md)
